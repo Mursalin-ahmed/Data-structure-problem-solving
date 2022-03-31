@@ -1,21 +1,21 @@
 #include <iostream>
 using namespace std;
-int binarySearch(int arr[], int size, int key)
+int binarySearch(int arr[], int s, int key)
 {
     int start = 0;
-    int end = size - 1;
+    int end = s - 1;
     ///For normal approch
     //int mid =  (start+end)/2;
     ///Integer overflow:
     ///if It became start = 2^31 and end = 2^31 So we should use
-    int mid = start + (end - start) / 2;
+    int mid = start + (end-start)/2;
     while (start <= end)
     {
         if (arr[mid] == key)
         {
             return mid;
         }
-        if (arr[mid] < key)
+        if (key>arr[mid])
         {
             start = mid + 1;
         }
@@ -23,7 +23,8 @@ int binarySearch(int arr[], int size, int key)
         {
             end = mid - 1;
         }
-        int mid = start + (end - start) / 2;
+        int mid = start + (end-start)/2;
+
     }
     return -1;
 }
